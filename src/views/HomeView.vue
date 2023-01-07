@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import {reactive, computed, watch} from 'vue'
+import {reactive, computed, watch, onBeforeUpdate, onUpdated, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, onActivated, onDeactivated} from 'vue'
 
 const productName = 'Apple Macbook',
     price = 4000
@@ -46,6 +46,32 @@ const total = computed ( ()=>{
 
 watch ( ()=>{
     if (product.quantity > 4) alert ('You went over your head!')
+})
+
+// onBeforeMount( ()=>{
+//     console.log('Im on my way')
+// })
+// onMounted( ()=>{
+//     console.log('Im Here')
+// })
+// onBeforeUnmount( ()=>{
+//     console.log('Im About to Leave')
+// })
+// onUnmounted( ()=>{
+//     console.log('Im Gone')
+// })
+// onActivated( ()=>{
+//     console.log('Im Active')
+// })
+// onDeactivated( ()=>{
+//     console.log('No Longer Active')
+// })
+onBeforeUpdate( ()=>{
+    alert('im about to update')
+})
+
+onUpdated( ()=>{
+    console.log('The update is: '+product.quantity)
 })
 </script>
 
