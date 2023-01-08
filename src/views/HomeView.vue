@@ -14,7 +14,7 @@
         </div>
 
         <div class="note">
-            <input v-model="product.note" type="text" class="input">
+            <input v-model="product.note" type="text" class="input" v-autofocus>
             <p> {{ product.note }} </p>
         </div>
 
@@ -27,6 +27,7 @@
 
 <script setup>
 import {reactive, computed, watch, onBeforeUpdate, onUpdated, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, onActivated, onDeactivated} from 'vue'
+import {vAutofocus} from '@/directives/vAutofocus.js'
 
 const productName = 'Apple Macbook',
     price = 4000
@@ -44,10 +45,19 @@ const total = computed ( ()=>{
     return product.quantity * price * 1.20
 })
 
-watch ( ()=>{
-    if (product.quantity > 4) alert ('You went over your head!')
-})
+// watch ( ()=>{
+//     if (product.quantity > 4) alert ('You went over your head!')
+// })
 
+/*LOCAL DIRECTIVES */
+// const vAutofocus = {
+//     mounted: (el) =>{
+//         el.focus()
+//     }
+// }
+
+
+/* HOOKS */
 // onBeforeMount( ()=>{
 //     console.log('Im on my way')
 // })
@@ -66,13 +76,13 @@ watch ( ()=>{
 // onDeactivated( ()=>{
 //     console.log('No Longer Active')
 // })
-onBeforeUpdate( ()=>{
-    alert('im about to update')
-})
+// onBeforeUpdate( ()=>{
+//     alert('im about to update')
+// })
 
-onUpdated( ()=>{
-    console.log('The update is: '+product.quantity)
-})
+// onUpdated( ()=>{
+//     console.log('The update is: '+product.quantity)
+// })
 </script>
 
 
